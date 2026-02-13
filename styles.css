@@ -1,0 +1,593 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    font-family: 'Georgia', serif;
+    position: relative;
+}
+
+/* Floating Hearts Background */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.floating-item {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    animation: float-up linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Glowing particles */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ff69b4;
+    border-radius: 50%;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Small Decorative Elements */
+.decoration {
+    position: fixed;
+    font-size: 30px;
+    opacity: 0.7;
+    animation: gentle-float 4s ease-in-out infinite;
+    z-index: 5;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.deco-1 { top: 3%; left: 3%; animation-delay: 0s; }
+.deco-2 { top: 5%; right: 5%; animation-delay: 0.5s; }
+.deco-3 { bottom: 5%; left: 5%; animation-delay: 1s; }
+.deco-4 { bottom: 3%; right: 3%; animation-delay: 1.5s; }
+
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* ============ GIANT TEDDY BEAR ============ */
+.teddy-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: teddy-wiggle 3s ease-in-out infinite;
+}
+
+@keyframes teddy-wiggle {
+    0%, 100% { 
+        transform: translate(-50%, -50%) rotate(-1deg); 
+    }
+    50% { 
+        transform: translate(-50%, -50%) rotate(1deg); 
+    }
+}
+
+/* Teddy Head - Giant */
+.teddy-head {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto -50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 12;
+    animation: head-wiggle 2.5s ease-in-out infinite;
+}
+
+.teddy-head::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+        rgba(255, 105, 180, 0.7) 0%, 
+        rgba(255, 105, 180, 0.3) 45%, 
+        transparent 75%);
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: glow-pulse 2.5s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+#main-teddy {
+    width: 75%;
+    height: auto;
+    border-radius: 20px;
+    filter: none !important;
+}
+
+@keyframes head-wiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes glow-pulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Teddy Body Container */
+.teddy-body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+}
+
+/* Teddy Torso Background */
+.teddy-torso {
+    position: absolute;
+    font-size: clamp(200px, 45vw, 450px);
+    z-index: 7;
+    opacity: 0.3;
+    filter: blur(2px);
+    transform: scaleY(1.2);
+}
+
+/* Teddy Paws - Left */
+.teddy-paw-left {
+    position: absolute;
+    left: clamp(-80px, -12vw, -120px);
+    top: 50%;
+    transform: translateY(-50%) rotate(25deg);
+    font-size: clamp(50px, 10vw, 100px);
+    z-index: 11;
+    animation: paw-left-move 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255,105,180,0.4));
+}
+
+@keyframes paw-left-move {
+    0%, 100% { transform: translateY(-50%) rotate(25deg); }
+    50% { transform: translateY(-50%) rotate(35deg) scale(1.05); }
+}
+
+/* Teddy Paws - Right */
+.teddy-paw-right {
+    position: absolute;
+    right: clamp(-80px, -12vw, -120px);
+    top: 50%;
+    transform: translateY(-50%) rotate(-25deg) scaleX(-1);
+    font-size: clamp(50px, 10vw, 100px);
+    z-index: 11;
+    animation: paw-right-move 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255,105,180,0.4));
+}
+
+@keyframes paw-right-move {
+    0%, 100% { transform: translateY(-50%) rotate(-25deg) scaleX(-1); }
+    50% { transform: translateY(-50%) rotate(-35deg) scaleX(-1) scale(1.05); }
+}
+
+/* Teddy Feet */
+.teddy-feet {
+    display: flex;
+    justify-content: center;
+    gap: clamp(80px, 20vw, 200px);
+    margin-top: -10px;
+    z-index: 6;
+}
+
+.teddy-foot {
+    font-size: clamp(40px, 8vw, 80px);
+    animation: foot-wiggle 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255,105,180,0.3));
+}
+
+.teddy-foot-left {
+    animation: foot-wiggle-left 1.5s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.teddy-foot-right {
+    animation: foot-wiggle-right 1.5s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+@keyframes foot-wiggle-left {
+    0%, 100% { transform: rotate(-15deg) translateY(0); }
+    50% { transform: rotate(-10deg) translateY(-5px); }
+}
+
+@keyframes foot-wiggle-right {
+    0%, 100% { transform: rotate(15deg) scaleX(-1) translateY(0); }
+    50% { transform: rotate(10deg) scaleX(-1) translateY(-5px); }
+}
+
+/* Love hearts floating from teddy */
+.teddy-hearts {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    z-index: 13;
+}
+
+.teddy-love {
+    font-size: clamp(20px, 4vw, 35px);
+    animation: heart-float 3s ease-in-out infinite;
+    opacity: 0.9;
+}
+
+.teddy-love:nth-child(1) { animation-delay: 0s; }
+.teddy-love:nth-child(2) { animation-delay: 1s; }
+.teddy-love:nth-child(3) { animation-delay: 2s; }
+
+@keyframes heart-float {
+    0%, 100% { 
+        transform: translateY(0) scale(1); 
+        opacity: 0.9;
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.2); 
+        opacity: 1;
+    }
+}
+
+/* ============ MAIN CARD ============ */
+.card {
+    background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    border-radius: clamp(15px, 3vw, 30px);
+    padding: clamp(25px, 4vw, 50px) clamp(20px, 5vw, 60px);
+    text-align: center;
+    box-shadow: 
+        0 20px 50px rgba(0,0,0,0.6),
+        0 0 60px rgba(255,105,180,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,105,180,0.5);
+    position: relative;
+    z-index: 10;
+    animation: card-appear 1s ease-out;
+    max-width: min(95vw, 650px);
+    max-height: 75vh; 
+    overflow-y: auto;
+}
+
+@keyframes card-appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #ff6b6b, #ff69b4, #a855f7, #ff1493, #ff6b6b);
+    border-radius: clamp(17px, 3.2vw, 32px);
+    z-index: -1;
+    animation: glow-border 4s linear infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes glow-border {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.big-heart {
+    font-size: clamp(40px, 10vw, 70px);
+    animation: heartbeat 1.5s ease-in-out infinite;
+    display: inline-block;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 25px rgba(255,105,180,0.8));
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.1); }
+}
+
+.title {
+    font-size: clamp(1.3rem, 5vw, 2.2rem);
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 
+        0 0 20px rgba(255,105,180,0.8),
+        0 0 40px rgba(255,105,180,0.5);
+}
+
+.name-highlight {
+    background: linear-gradient(135deg, #ffd700, #ffaa00, #fff176);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+    font-weight: bold;
+    filter: drop-shadow(0 0 15px rgba(255,215,0,0.8));
+}
+
+.subtitle {
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    color: #b8b8d1;
+    margin-bottom: clamp(15px, 3vh, 30px);
+    font-style: italic;
+}
+
+.question {
+    font-size: clamp(1.1rem, 4vw, 1.8rem);
+    color: #ffffff;
+    margin-bottom: clamp(15px, 3vh, 30px);
+    text-shadow: 0 0 20px rgba(255,105,180,0.8);
+    background: linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(255,105,180,0.15) 100%);
+    padding: clamp(12px, 2.5vw, 20px) clamp(15px, 3vw, 30px);
+    border-radius: 15px;
+    border: 1px solid rgba(255,105,180,0.3);
+}
+
+.question .name-in-question {
+    background: linear-gradient(135deg, #ffd700, #ffaa00, #fff176);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	font-weight: bold;
+	filter: drop-shadow(0 0 15px rgba(255,215,0,0.8));
+}
+
+.buttons-container {
+    display: flex;
+    gap: clamp(15px, 3vw, 30px);
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: clamp(12px, 2vw, 18px) clamp(25px, 5vw, 50px);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-family: 'Georgia', serif;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff1493 50%, #ff69b4 100%);
+    color: white;
+    box-shadow: 
+        0 8px 25px rgba(255,105,180,0.4),
+        0 0 0 0 rgba(255,105,180,0.7);
+    animation: yes-pulse 2s ease-in-out infinite;
+    position: relative;
+    z-index: 100;
+}
+
+@keyframes yes-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 8px 25px rgba(255,105,180,0.4),
+            0 0 0 0 rgba(255,105,180,0.7);
+    }
+    50% {
+        box-shadow: 
+            0 8px 25px rgba(255,105,180,0.4),
+            0 0 0 15px rgba(255,105,180,0);
+    }
+}
+
+.btn-yes:hover {
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+    box-shadow: 
+        0 12px 35px rgba(255,105,180,0.6),
+        0 0 50px rgba(255,105,180,0.4);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #4a4a6a 0%, #6a6a8a 100%);
+    color: white;
+    transition: all 0.15s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 99;
+}
+
+.btn-no:hover {
+    cursor: not-allowed;
+}
+
+.shake {
+    animation: shake 0.2s ease-in-out infinite; 
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(5px, 5px); }
+    50% { transform: translate(-5px, -5px); }
+    75% { transform: translate(5px, -5px); }
+    100% { transform: translate(0, 0); }
+}
+
+.love-note {
+    margin-top: clamp(15px, 3vh, 30px);
+    padding: clamp(12px, 2vw, 20px);
+    border-top: 1px solid rgba(255,105,180,0.2);
+    color: #c8c8e0;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    font-style: italic;
+    background: linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(255,105,180,0.08) 100%);
+    border-radius: 12px;
+}
+
+.love-note span {
+    color: #fff694;
+    font-weight: bold;
+}
+
+/* Hover Message */
+.hover-message {
+    position: fixed;
+    bottom: clamp(20px, 5vh, 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff1493 0%, #a855f7 100%);
+    color: #ffffff;
+    padding: clamp(12px, 2vw, 18px) clamp(20px, 4vw, 35px);
+    border-radius: 30px;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    box-shadow: 
+        0 10px 40px rgba(168,85,247,0.5),
+        0 0 20px rgba(255,105,180,0.3);
+    border: 2px solid rgba(255,255,255,0.3);
+    pointer-events: none;
+    white-space: nowrap;
+    max-width: 90vw;
+    text-align: center;
+}
+
+.hover-message.show {
+    opacity: 1;
+    animation: bounce-message 0.5s ease;
+}
+
+@keyframes bounce-message {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Hide scrollbar but allow scrolling if needed */
+.card::-webkit-scrollbar {
+    display: none;
+}
+.card {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-height: 700px) {
+    .teddy-head {
+        font-size: clamp(70px, 15vw, 120px);
+    }
+    .teddy-feet {
+        display: none;
+    }
+    .card {
+        padding: 20px 25px;
+    }
+}
+
+@media (max-width: 400px) {
+    .teddy-paw-left, .teddy-paw-right {
+        font-size: 40px;
+    }
+    .teddy-paw-left {
+        left: -50px;
+    }
+    .teddy-paw-right {
+        right: -50px;
+    }
+}
+
+@media (max-height: 500px) {
+    .teddy-head {
+        font-size: 60px;
+    }
+    .teddy-paw-left, .teddy-paw-right {
+        font-size: 35px;
+    }
+    .big-heart {
+        font-size: 35px;
+        margin-bottom: 5px;
+    }
+    .title {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+    .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+    .question {
+        font-size: 1rem;
+        padding: 10px 15px;
+        margin-bottom: 10px;
+    }
+    .love-note {
+        padding: 10px;
+        margin-top: 10px;
+    }
+}

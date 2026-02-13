@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <title>💕 Кое-что важное для Лизы! 💕</title>
+</head>
+<body>
+    <!-- Floating Items Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Small Decorative Elements -->
+    <div class="decoration deco-1">🌸</div>
+    <div class="decoration deco-2">🌺</div>
+    <div class="decoration deco-3">🌷</div>
+    <div class="decoration deco-4">🌹</div>
+
+    <!-- Giant Teddy Bear Wrapper -->
+    <div class="teddy-wrapper">
+        
+        <!-- Floating Hearts Above Teddy -->
+        <div class="teddy-hearts">
+            <span class="teddy-love">💕</span>
+            <span class="teddy-love">💖</span>
+            <span class="teddy-love">💗</span>
+        </div>
+
+        <div class="teddy-head">
+            <img id="main-teddy" src="GomaGifs/Goma-Hi.gif" alt="Teddy">
+        </div>
+
+        <!-- Teddy Body Section -->
+        <div class="teddy-body">
+            
+            <!-- Blurred Teddy Torso Behind Card -->
+            <div class="teddy-torso">🧸</div>
+            
+            <!-- Left Paw -->
+            <div class="teddy-paw-left">🐾</div>
+
+            <!-- Main Card (on teddy's torso) -->
+            <div class="card" id="mainCard">
+                <div class="big-heart">💖</div>
+                
+                <h1 class="title">Привет, <span class="name-highlight">Лиза</span>! ✨</h1>
+                <p class="subtitle">Я хочу спросить тебя о чём-то очень важном...</p>
+                
+                <h2 class="question">
+                    <span class="name-in-question">Лиза</span>, ты будешь моей Валентинкой? 💕
+                </h2>
+                
+                <div class="buttons-container" id="buttonsContainer">
+                    <button class="btn btn-yes" id="yesBtn" onclick="sayYes()">Да! 💖</button>
+                    <button class="btn btn-no" id="noBtn" onmouseover="runAway()" onclick="runAway()">Нет</button>
+                </div>
+
+                <div class="love-note">
+                    <p>Все истории любви прекрасны, но <span>наша — самая лучшая</span> 💕</p>
+                </div>
+            </div>
+
+            <!-- Right Paw -->
+            <div class="teddy-paw-right">🐾</div>
+        </div>
+
+        <!-- Teddy Feet (at bottom) -->
+        <div class="teddy-feet">
+            <div class="teddy-foot teddy-foot-left">🐾</div>
+            <div class="teddy-foot teddy-foot-right">🐾</div>
+        </div>
+    </div>
+
+    <!-- Hover Message -->
+    <div class="hover-message" id="hoverMessage">
+        Мимо! Попробуй другую кнопку! 😜💕
+    </div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>💖 Лиза сказала Да! 💖</title>
+</head>
+<body>
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Floating Background -->
+    <div class="floating-bg" id="floatingBg"></div>
+
+    <!-- Decorative Elements -->
+    <div class="decoration deco-1">🧸</div>
+    <div class="decoration deco-2">🌸</div>
+    <div class="decoration deco-3">💐</div>
+    <div class="decoration deco-4">🧸</div>
+    <div class="decoration deco-5">🌺</div>
+    <div class="decoration deco-6">🌷</div>
+
+    <!-- Main Content -->
+    <div class="celebration-container">
+        <div class="mega-heart" id="megaHeart" onclick="handleInteraction(event, 'heart')">💖</div>
+        
+        <div class="main-message">
+            <h1 class="yay-text">
+                УРААА! 🎉
+                <span class="name-celebrate">Лиза сказала «ДА»!</span>
+            </h1>
+            <p class="sub-message">Ты сделала меня самым счастливым человеком на свете! 💕</p>
+        </div>
+
+        <div class="love-card">
+            <span class="corner-deco corner-tl">🦋</span>
+            <span class="corner-deco corner-tr">🦋</span>
+            <span class="corner-deco corner-bl">✨</span>
+            <span class="corner-deco corner-br">✨</span>
+            
+            <h2 class="love-title">💌 Моя дорогая Лиза 💌</h2>
+            
+            <div class="love-text">
+                <p>С того самого момента, как я встретил тебя, я понял, что ты особенная. Каждый день с тобой кажется прекрасным приключением, и я уже не представляю свою жизнь без твоей улыбки, твоего смеха и твоей любви.</p>
+    
+                <p>Ты превращаешь каждый обычный миг в <span class="highlight">необыкновенный</span>, и с каждым днем я влюбляюсь в тебя всё сильнее. Спасибо за то, что ты есть — мой лучший друг, моя поддержка и моя единственная Валентинка. 💫</p>
+    
+                <p>За нас, за нашу любовь и за бесконечное количество чудесных моментов, которые ждут нас впереди! 💕</p>
+    
+                <p class="signature">Навсегда и только твой, ❤️<br>Твой Валентин</p>
+            </div>
+        </div>
+
+        <!-- Interactive Buttons -->
+        <div class="buttons-row">
+            <button class="action-btn" onclick="handleInteraction(event, 'confetti')">🎉 Больше конфетти!</button>
+            <button class="action-btn secondary" onclick="handleInteraction(event, 'hug')">🤗 Отправить обнимашку!</button>
+        </div>
+
+        <!-- Love Jar Section -->
+        <div class="love-jar-section">
+            <h3 class="love-jar-title">✨ Нажми на баночку, чтобы узнать, почему я тебя люблю! ✨</h3>
+            <div class="love-jar-container">
+                <div class="love-jar" onclick="handleInteraction(event, 'jar')">🏺</div>
+            </div>
+            <p class="jar-hint">Каждое нажатие открывает причину и заполняет шкалу любви! 💕</p>
+        </div>
+
+        <!-- Love Meter - MORPHING INFINITY -->
+        <div class="love-meter-section">
+            <p class="love-meter-title">💕 Наша шкала любви 💕</p>
+            
+            <div class="love-meter-wrapper">
+                <!-- Regular Bar -->
+                <div class="love-meter-container" id="loveMeterContainer" onclick="handleInteraction(event, 'meter')">
+                    <div class="love-meter-fill" id="loveMeterFill"></div>
+                </div>
+
+                <!-- Infinity Symbol (Hidden by default) -->
+                <div class="infinity-container" id="infinityContainer">
+                    <span class="infinity-sparkle">✨</span>
+                    <span class="infinity-sparkle">💖</span>
+                    <span class="infinity-sparkle">✨</span>
+                    <span class="infinity-sparkle">💖</span>
+                    
+                    <div class="infinity-svg-wrapper">
+                            <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="infinityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#ff69b4">
+                                            <animate attributeName="stop-color" values="#ff69b4;#ff1493;#a855f7;#ffd700;#ff69b4" dur="3s" repeatCount="indefinite"/>
+                                        </stop>
+                                        <stop offset="50%" stop-color="#a855f7">
+                                            <animate attributeName="stop-color" values="#a855f7;#ffd700;#ff69b4;#ff1493;#a855f7" dur="3s" repeatCount="indefinite"/>
+                                        </stop>
+                                        <stop offset="100%" stop-color="#ff69b4">
+                                            <animate attributeName="stop-color" values="#ff69b4;#ff1493;#a855f7;#ffd700;#ff69b4" dur="3s" repeatCount="indefinite"/>
+                                        </stop>
+                                    </linearGradient>
+                                </defs>
+        
+                                <path class="infinity-path infinity-path-bg" 
+                                    d="M100,40 C100,40 130,10 160,10 C190,10 190,70 160,70 C130,70 100,40 100,40 C100,40 70,10 40,10 C10,10 10,70 40,70 C70,70 100,40 100,40"/>
+        
+                                <path class="infinity-path infinity-path-fill" 
+                                    d="M100,40 C100,40 130,10 160,10 C190,10 190,70 160,70 C130,70 100,40 100,40 C100,40 70,10 40,10 C10,10 10,70 40,70 C70,70 100,40 100,40"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="love-meter-text" id="loveMeterText">Дари любовь каждым касанием! ❤️</p>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-section" id="countdownSection">
+            <p class="countdown-title">⏰ Countdown to Valentine's Day 2025 ⏰</p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for popups -->
+    <div class="overlay" id="overlay" onclick="closeLoveNote()"></div>
+
+    <!-- Love Note Popup -->
+    <div class="love-note-popup" id="loveNotePopup">
+        <div class="note-emoji" id="noteEmoji">💕</div>
+        <p class="note-number" id="noteNumber">Причина #1</p>
+        <p class="note-text" id="noteText">Загрузка...</p>
+        <button class="close-note-btn" onclick="closeLoveNote()">Больше Любви! 💖</button>
+    </div>
+
+    <!-- Virtual Hug Animation - GIF VERSION -->
+    <div class="hug-animation" id="hugAnimation">
+        <!-- Floating hearts around the GIF -->
+        <div class="hug-hearts">
+            <span class="hug-heart">💕</span>
+            <span class="hug-heart">💖</span>
+            <span class="hug-heart">💗</span>
+            <span class="hug-heart">💓</span>
+            <span class="hug-heart">💝</span>
+            <span class="hug-heart">🤗</span>
+        </div>
+        <img src="GomaHug.gif" alt="Virtual Hug" class="hug-gif">
+    </div>
+    <div class="hug-message" id="hugMessage">Отправляю тебе самые крепкие виртуальные объятия, Лиза! 🤗💖</div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="metadata" crossorigin="anonymous">
+        <source src="./Cupid.mp3" type="audio/mpeg">
+        <source src="Cupid.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Control Button -->
+    <button id="musicToggle" class="music-btn">🎵</button>
+
+    <!-- ========== MUSIC CONTROLLER ========== -->
+    <script>
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+        let isMusicPlaying = false;
+        let hasMusicInteracted = false;
+
+        // Music settings
+        music.volume = 0.4;
+        const startTime = 9; // Start from 9 seconds
+
+        // Create visualizer bars
+        const barsContainer = document.createElement('div');
+        barsContainer.className = 'music-bars';
+        for (let i = 0; i < 4; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'music-bar';
+            barsContainer.appendChild(bar);
+        }
+        musicBtn.innerHTML = '';
+        musicBtn.appendChild(document.createTextNode('🎵'));
+
+        // Function to start music
+        function startMusic() {
+            music.currentTime = startTime;
+            music.play().then(() => {
+                isMusicPlaying = true;
+                hasMusicInteracted = true;
+                updateMusicButton();
+            }).catch(err => {
+                console.log('Music play failed:', err);
+            });
+        }
+
+        // Function to update button appearance
+        function updateMusicButton() {
+            if (isMusicPlaying) {
+                musicBtn.innerHTML = '';
+                musicBtn.appendChild(barsContainer.cloneNode(true));
+                musicBtn.classList.add('playing');
+            } else {
+                musicBtn.innerHTML = '🎵';
+                musicBtn.classList.remove('playing');
+            }
+        }
+
+        // Toggle music function
+        function toggleMusic(e) {
+            e.stopPropagation();
+            
+            if (!hasMusicInteracted) {
+                startMusic();
+                return;
+            }
+
+            if (isMusicPlaying) {
+                music.pause();
+                isMusicPlaying = false;
+            } else {
+                music.currentTime = startTime;
+                music.play();
+                isMusicPlaying = true;
+            }
+            updateMusicButton();
+        }
+
+        // Button click handler
+        musicBtn.addEventListener('click', toggleMusic);
+
+        // All possible interaction events for autoplay
+        const interactionEvents = [
+            'click',
+            'touchstart',
+            'mousemove',
+            'scroll',
+            'keydown'
+        ];
+
+        // Handler for first interaction
+        function onFirstInteraction(e) {
+            if (hasMusicInteracted) return;
+            if (e.target.id === 'musicToggle') return;
+            
+            startMusic();
+            removeInteractionListeners();
+        }
+
+        // Add interaction listeners
+        function addInteractionListeners() {
+            interactionEvents.forEach(event => {
+                document.addEventListener(event, onFirstInteraction, { passive: true });
+            });
+        }
+
+        // Remove interaction listeners
+        function removeInteractionListeners() {
+            interactionEvents.forEach(event => {
+                document.removeEventListener(event, onFirstInteraction);
+            });
+        }
+
+        // Audio error handling
+        music.addEventListener('error', (e) => {
+            console.error('Audio error:', e);
+            console.error('Audio error code:', music.error?.code);
+            console.error('Audio error message:', music.error?.message);
+        });
+
+        music.addEventListener('loadeddata', () => {
+            console.log('Audio loaded successfully');
+        });
+
+        // Try autoplay first
+        music.currentTime = startTime;
+        music.play().then(() => {
+            isMusicPlaying = true;
+            hasMusicInteracted = true;
+            updateMusicButton();
+            removeInteractionListeners();
+        }).catch((err) => {
+            console.log('🎵 Autoplay blocked:', err.message);
+            console.log('🎵 Waiting for interaction to play music...');
+            addInteractionListeners();
+        });
+
+        // Handle page visibility (pause when tab hidden)
+        document.addEventListener('visibilitychange', () => {
+            if (!hasMusicInteracted) return;
+            
+            if (document.hidden && isMusicPlaying) {
+                music.pause();
+            } else if (!document.hidden && isMusicPlaying) {
+                music.play();
+            }
+        });
+
+        // When song loops, restart from 9 seconds
+        music.addEventListener('ended', () => {
+            music.currentTime = startTime;
+            music.play();
+        });
+
+        // Double-check loop reset
+        music.addEventListener('timeupdate', () => {
+            if (music.duration - music.currentTime < 0.5) {
+                music.currentTime = startTime;
+            }
+        });
+    </script>
+</body>
+</html>
